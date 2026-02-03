@@ -1,8 +1,0 @@
-multi-armed bandit (MAB) - Algorithm to decide what content to show a user when you don't yet know what they'll like.
-                           Exploration vs Exploitation. Trying different items to learn how geed they are, and showing what already works well.
-
-Rewards - measureable feedback signal that tells teh system whether a recommendation was successful (ie: like, purchace, time spend on image/vid)
-reinforcement learning (RL) - ML where an agent learns by interactive with an environment and improving its behavior based on rewards and penalties
-deep reinforcement learning - ML approach where an agent learns by trail and error and uses deep neural netwroks to decide what actions to take in order to maximize long-term reward.
-                              Reinforcement learning + deep learning
-RL vs MAB - MAB are lighter and learn faster, RL are heavier and more catious learning
