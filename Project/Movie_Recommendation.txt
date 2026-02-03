@@ -40,6 +40,9 @@ for genre in genres_to_test:
 
 SECOND MODEL CHECK
 
+Source for second and third model:
+https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system
+
 
 Plot description based recommender
 based off of overview
