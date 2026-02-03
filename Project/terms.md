@@ -99,3 +99,50 @@ The goal is to improve transparency, trust, and user satisfaction by making the 
 **Example**: “This product was recommended because you previously purchased similar items.”
 
 ---
+
+## Recommendation Approaches
+
+### Collaborative Filtering (CF)
+
+**Collaborative Filtering** is a recommendation approach that suggests items to a user based on the **preferences and behaviors of other users**.  
+
+- **User-based CF**: Finds users with similar preferences and recommends items they liked.  
+- **Item-based CF**: Finds items similar to those the user has liked before.  
+
+**Example**: “Users who liked this movie also liked…” on Netflix.  
+
+---
+
+### Demographic Filtering (DF)
+
+**Demographic Filtering** makes recommendations based on **user demographic information**, such as age, gender, location, or occupation.  
+
+- Assumes users with similar demographics have similar preferences.  
+- Often used when interaction data is sparse or unavailable.  
+
+**Example**: A music app recommending songs popular among people of the same age group.  
+
+---
+
+### Content-Based Filtering (CB)
+
+**Content-Based Filtering** recommends items similar to those the user has liked in the past, based on **item features or attributes**.  
+
+- Focuses on analyzing the **content** of items (e.g., genre, keywords, descriptions).  
+- Works well for new users if some initial preferences are known.  
+
+**Example**: Recommending movies with the same director or genre as previously watched films.  
+
+---
+
+### Knowledge-Based (KB)
+
+**Knowledge-Based Recommendation Systems** use **explicit knowledge about users and items** to generate recommendations.  
+
+- Does not rely on historical user interactions.  
+- Often rule-based or guided by constraints and preferences provided by the user.  
+
+**Example**: A travel website asking for preferred destination type, budget, and travel dates to suggest trips.  
+
+---
+
