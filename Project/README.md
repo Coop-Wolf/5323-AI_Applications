@@ -1,5 +1,10 @@
 # README
 
+### I think i want to go with Movie recommendation, because a social media style recommendation algorithm is harder to find data on.
+### because of this, i no longer need to research on bandits and reinforcement learning. Need to remove all current sources and find need ones
+### that learn more towards movie recommendataions.
+
+
 ## Overview
 
 This folder contains resources related to **recommendation systems** and associated machine learning concepts. It includes definitions, explanations, and sources used in research and study.
