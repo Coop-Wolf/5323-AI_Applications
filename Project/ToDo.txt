@@ -1,0 +1,71 @@
+Use prebuilt libraries/frameworks
+
+🔹 Content-Based Filtering
+
+- Can be done with scikit-learn:
+
+- -Use TfidfVectorizer on movie descriptions or tags
+
+- - Compute cosine similarity between movies and user profile
+
+- Works out of the box for cold-start users
+
+🔹 Collaborative Filtering
+
+- Surprise library is perfect:
+
+- - KNNBasic, KNNWithMeans → user-based or item-based CF
+
+- - SVD → matrix factorization
+
+- Cold-start limitation: CF alone struggles for new users, so mostly used as a baseline
+
+
+
+
+Library installs:
+
+# Install Surprise for collaborative filtering
+pip install scikit-surprise
+
+# Install LightFM for hybrid recommendations
+pip install lightfm
+
+# Standard libraries
+pip install pandas numpy scikit-learn
+
+
+4️⃣ How You’d Use Them in Your Project
+
+Content-based approach (for cold-start)
+
+Build movie feature matrix from genres, tags, or TF-IDF of descriptions
+
+Build user profile from their initial ratings
+
+Compute similarity → recommend top-N movies
+
+Collaborative filtering baseline
+
+Use Surprise to build user-based or item-based CF model
+
+Evaluate performance on the same users (simulate cold-start)
+
+
+
+
+Example of Building movie feature matrix
+
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Example: movies dataframe
+movies = pd.DataFrame({
+    'movie_id': [101, 102, 103, 104],
+    'genres': ['Action', 'Comedy', 'Action|Comedy', 'Drama']
+})
+
+# One-hot encode genres
+movies_onehot = movies['genres'].str.get_dummies(sep='|')
+print(movies_onehot)

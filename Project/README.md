@@ -1,64 +1,122 @@
 # README
 
-### I think i want to go with Movie recommendation, because a social media style recommendation algorithm is harder to find data on.
-### because of this, i no longer need to research on bandits and reinforcement learning. Need to remove all current sources and find need ones
-### that learn more towards movie recommendataions.
+
+## Problem
+
+Traditional collaborative filtering recommendation systems rely heavily on historical user–item interactions, making them ineffective for new users with little or no rating data. This project investigates whether a content-based recommendation approach can provide more accurate and diverse movie recommendations in cold-start scenarios. Using the MovieLens dataset, the performance of content-based filtering is compared against collaborative filtering under simulated cold-start conditions.
+
+Collaborative filtering ❌ struggles
+Content-based methods   ✔ can still work
+
+## The Process
+
+I'll be implementing two systems
+- Collaborative Filtering
+- Content-Based Filtering
+
+## How to simlulate "cold start"
+
+For a user
+- Keep 0-3 ratings
+- Hide the rest
+Generate recommendations
+Compare against hidden ratings
+
+Inputs
+- Movie metadata
+- Sparce user ratings (0-3 movies)
+
+Output
+- Top-N movie recommendations (5 or 10)
+
+## Algorithm
+Content-Based appraoch
+1. Represent each movie as a vector
+- Genres -> one-hot encoding
+- Tags -> TF-IDF
+2. Build a user profile vecotr
+- Average of liked movie vectors
+3. Compute similarity
+- Cosine simularity
+4. Rank movies by similarity score
+Collaborative filtering baseline
+- User-based CF with cosine similarity
+- item-based CF
+
+## Evaluation
+- Precision@K
+- Recall@K
+- Coverage
 
 
-## Overview
 
-This folder contains resources related to **recommendation systems** and associated machine learning concepts. It includes definitions, explanations, and sources used in research and study.
+## MovieLens Dataset Description
+
+The **MovieLens dataset** is a widely used benchmark dataset for building and evaluating recommendation systems. It contains user ratings of movies along with movie metadata.
+
+## 1. Dataset Structure
+
+The dataset typically includes the following tables:
+
+### Ratings Table
+
+| Column      | Type   | Description                                  |
+|------------|-------|----------------------------------------------|
+| `user_id`   | int   | Unique identifier for each user             |
+| `movie_id`  | int   | Unique identifier for each movie            |
+| `rating`    | float | User’s rating of the movie (e.g., 1–5)     |
+| `timestamp` | int   | Time when the rating was submitted          |
+
+**Example:**
+
+| user_id | movie_id | rating | timestamp  |
+|---------|----------|--------|------------|
+| 1       | 101      | 5      | 874965758  |
+| 1       | 102      | 3      | 874965759  |
+| 2       | 101      | 4      | 874965760  |
+
+> Each row represents **one user’s rating of one movie**. By grouping all rows by `user_id`, we can see **all movies rated by a particular user**, which is useful for simulating cold-start scenarios.
 
 ---
 
-## Files in this folder
+### Movies Table
 
-### 1. `terms.md`
-This file contains a collection of key terms and concepts related to recommendation algorithms and machine learning. Topics covered include:
+| Column     | Type   | Description                                   |
+|------------|--------|-----------------------------------------------|
+| `movie_id` | int    | Unique identifier for each movie             |
+| `title`    | string | Movie title                                  |
+| `genres`   | string | Genres associated with the movie (e.g., Comedy\|Romance) |
 
-- **Multi-Armed Bandit (MAB)**  
-- **Rewards**  
-- **Reinforcement Learning (RL)**  
-- **Deep Reinforcement Learning (DRL)**  
-- **Types of Recommendation Systems**
-  - Interactive Recommendation
-  - Conversational Recommendation
-  - Sequential Recommendation
-  - Explainable Recommendation  
-- Comparison of RL and MAB  
-- Real-world applications, including social media recommendation systems  
+**Example:**
 
-The file is intended as a **study guide or reference** for understanding these topics.
+| movie_id | title             | genres                       |
+|----------|-----------------|-------------------------------|
+| 101      | Toy Story (1995) | Animation\|Children\|Comedy  |
+| 102      | Jumanji (1995)   | Adventure\|Children\|Fantasy |
 
 ---
 
-### 2. `sources.md`
-This file contains the **sources referenced during research**, along with their abstracts. Each entry includes:
+## 2. How It’s Used in Cold-Start Recommendation
 
-- **Title of the paper or article**  
-- **Abstract**
-- **Analysis**
-
-This provides a quick overview of the background literature used to inform the `terms.md` file.
+- **User ratings** provide the ground truth for simulation:
+  - Some ratings are **visible** to the model (simulating initial user input)
+  - Remaining ratings are **hidden** for evaluation
+- **Movie metadata** (genres, tags, etc.) is used in **content-based filtering** to generate recommendations for new users.
 
 ---
 
-## How to use these files
+## 3. Dataset Variants
 
-1. **Reading / Learning**:  
-   Start with `terms.md` to familiarize yourself with key concepts and terminology.
+- **MovieLens 100k**: ~100,000 ratings from 943 users and 1,682 movies  
+- **MovieLens 1M**: ~1,000,000 ratings from 6,000 users and 4,000 movies  
+- **MovieLens 20M**: ~20,000,000 ratings for large-scale research
 
-2. **Research / References**:  
-   Use `sources.md` to explore original papers, articles, and abstracts for deeper understanding or citation.
-
-3. **Cross-reference**:  
-   Concepts in `terms.md` are supported by the sources listed in `sources.md`.
+> For a cold-start project, **MovieLens 100k** is sufficient — small enough to experiment but rich enough for meaningful evaluation.
 
 ---
 
-## Notes
+## 4. Key Features for Cold-Start
 
-- These files are intended for educational purposes and personal study.
-- They provide concise summaries; for in-depth technical details, refer to the original sources.
-- The folder is structured to allow easy expansion with additional terms or sources in the future.
-
+- **Sparse ratings**: many users rate only a few movies  
+- **Rich movie metadata**: genres, tags, and sometimes keywords  
+- **Widely used**: makes results reproducible and comparable to prior research
