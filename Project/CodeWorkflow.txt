@@ -1,0 +1,30 @@
+The Complete Workflow
+
+Step 1: Get a Single User
+
+Pick one user (e.g., user_id = 196)
+Extract all their ratings
+
+Step 2: Split Their Ratings
+
+Keep some ratings (e.g., 5%) → This is what the model "knows" about the user
+Hide some ratings (e.g., 95%) → These are the movies we'll try to predict
+
+Step 3: Train the Model
+
+Use the kept ratings to learn what this user likes
+For content-based: "User likes Action and Sci-Fi movies"
+For collaborative filtering: "User rates similar to users X, Y, Z"
+
+Step 4: Generate Recommendations
+
+Model predicts ratings for movies the user hasn't rated yet (from the model's perspective)
+Generate a list of top N recommended movies
+
+Step 5: Evaluation
+
+Compare the model's recommendations against the hidden ratings
+Check if:
+
+The hidden high-rated movies appear in recommendations (precision/recall)
+The predicted ratings are close to actual ratings (RMSE, MAE)
