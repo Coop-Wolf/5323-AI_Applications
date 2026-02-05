@@ -1,0 +1,6 @@
+I've got models for Content-Based and Collaborative Based.
+They're not cold start scenarios to my knowledge
+Haven't done a hybrid approach.
+Two models are using different datasets
+
+What now?
