@@ -4,3 +4,20 @@ Haven't done a hybrid approach.
 Two models are using different datasets
 
 What now?
+
+
+
+Assignment 1:
+
+Knowing the input and output of my model, develop a model for it.
+
+
+
+Steps for project:
+
+1. Have them use the same dataset
+2. Get working with one model first
+    2.1 Fine tune model
+        2.1.1 Increase/decrease ratings
+        2.1.2 See if model is recommending properly
+        
