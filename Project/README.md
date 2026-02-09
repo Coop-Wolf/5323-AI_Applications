@@ -9,6 +9,9 @@ How can recommender systems generate meaningful recommendations for new users wi
 
 Collaborative filtering is a recommendation technique that predicts a user’s preferences by analyzing patterns of interaction across many users. It assumes that users who have behaved similarly in the past will have similar preferences in the future. Instead of relying on item characteristics, collaborative filtering uses user–item interaction data such as ratings, likes, views, or clicks to identify similarities between users or between items. Based on these similarities, the system recommends items that the user has not yet interacted with.
 
+User-Based CF: "People who liked movie X and movie Y also liked movie Z"
+Item-Based CF" "You liked movie X; poeple who liked mnovie X also like Movie Y.
+
 more creative, diverse, based on what similar users do.
 
 # Content-Based Filtering

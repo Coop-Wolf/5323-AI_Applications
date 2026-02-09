@@ -1,0 +1,38 @@
+# Import necessary libraries from Surprise
+from surprise import Reader, Dataset, SVD
+from surprise.model_selection import cross_validate
+import pandas as pd
+
+# Step 1: Load the ratings CSV into a pandas DataFrame
+ratings = pd.read_csv('tmdb/ratings_small.csv')
+ratings.head()  # Preview the first few rows (userId, movieId, rating, timestamp)
+
+# Step 2: Define a Reader object
+# The Reader object tells Surprise how to interpret the rating scale
+# By default, ratings are assumed to be between 1 and 5
+reader = Reader(rating_scale=(0.5, 5.0))  # Adjust if your dataset uses different min/max ratings
+
+# Step 3: Load the dataset from the DataFrame
+# Surprise expects only three columns: user, item, rating
+data = Dataset.load_from_df(ratings[['userId', 'movieId', 'rating']], reader)
+
+# Step 4: Define the SVD model
+# SVD (Singular Value Decomposition) is a collaborative filtering model
+# It learns latent features for users and movies to predict ratings
+svd = SVD()
+
+# Step 5: Evaluate the model using cross-validation
+# This will split the data into 5 folds and compute RMSE and MAE for each fold
+cross_validate(svd, data, measures=['RMSE', 'MAE'], cv=5, verbose=True)
+
+# Step 6: Train the model on the full dataset
+trainset = data.build_full_trainset()  # Convert the dataset to a format suitable for training
+svd.fit(trainset)  # Fit the SVD model (learn user and item embeddings)
+
+# Step 7: Inspect ratings for a specific user (optional)
+ratings[ratings['userId'] == 1]  # Shows all ratings by user 1
+
+# Step 8: Make a prediction
+# Predict user 1's rating for movie 302
+# The model returns the predicted rating, along with details of the prediction
+svd.predict(1, 302, r_ui=3)  # r_ui is the true rating if known (optional)
