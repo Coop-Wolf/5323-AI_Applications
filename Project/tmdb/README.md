@@ -5,13 +5,13 @@
 ### These datasets do not all go together
 
 
-### Go Together (Currently Using)
+### Go Together (Currently using for assignments)
 #### movies_metadata.csv
 #### ratings_small.csv
 #### keywords.csv
 #### credits.csv
 
 
-### Go Together (Not sure where this is being used)
+### Go Together (Used in content-based recommender)
 #### tmdb_5000_credits
 #### tmdb_5000_movies.csv
